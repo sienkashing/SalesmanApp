@@ -1,0 +1,19 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "plugins": ["react", "jsx-a11y", "import", "flowtype"],
+  "env": {
+    "jest": true
+  },
+  "rules": {
+    "quotes": "off",
+    "comma-dangle": "off",
+    "react/jsx-filename-extension": "off",
+    "class-methods-use-this": "off",
+    "react/require-default-props": "off",
+    "react/prefer-stateless-function": "off",
+    "no-return-assign": ["off", "except-parens"],
+    "global-require": "off",
+    "react/no-multi-comp": "off"
+  }
+}
