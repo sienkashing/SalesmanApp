@@ -2,7 +2,7 @@
 import React, { PureComponent } from "react";
 import { View, TextInput } from "react-native";
 import { Icon } from "react-native-elements";
-import Colors from "../../Colors";
+import Colors from "app/Colors";
 import styles from "./styles";
 
 // Component: LoginInput

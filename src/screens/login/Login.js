@@ -1,15 +1,15 @@
 // @flow
 import React, { Component } from "react";
 import {
-  View, Text, ImageBackground, Animated, Keyboard
+  View, Text, ImageBackground, Animated, Keyboard, StatusBar
 } from "react-native";
 import type { NavigationScreenProp, NavigationStateRoute } from "react-navigation";
-import loginUser from "../../api/user/login";
-import LoginManager from "../../services/LoginManager";
+import Colors from "app/Colors";
+import loginUser from "app/api/user/login";
+import LoginManager from "app/services/LoginManager";
+import getImage from "app/resource/getImage";
 import styles from "./styles";
-import LoginInput from "./LoginInput";
-import ErrorStatus from "./ErrorStatus";
-import LoginButton from "./LoginButton";
+import { LoginInput, LoginButton, ErrorStatus } from "./index";
 
 // Componet: Footer
 const Footer = () => (
@@ -134,15 +134,13 @@ export default class App extends Component<Props, State> {
 
     return (
       <View>
-        <ImageBackground
-          source={require("../../resource/images/background.jpeg")}
-          style={{ width: "100%", height: "100%" }}
-        >
+        <StatusBar backgroundColor={Colors.B900} />
+        <ImageBackground source={getImage("background")} style={{ width: "100%", height: "100%" }}>
           <View style={{ flex: 1 }}>
             <Text style={styles.titleStyle}>E-BizIT Sales Mobility Solution™</Text>
             <View style={styles.imageContainer}>
               <Animated.Image
-                source={require("../../resource/images/Network-diagram.png")}
+                source={getImage("network")}
                 style={{ width: "90%", height: imageHeight }}
                 resizeMode="contain"
               />

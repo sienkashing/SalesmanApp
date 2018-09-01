@@ -1,31 +1,10 @@
 // @flow
 import React, { Component } from "react";
-import {
-  StyleSheet, View, Button, StatusBar
-} from "react-native";
+import { View, Button, StatusBar } from "react-native";
 import type { NavigationScreenProp, NavigationStateRoute } from "react-navigation";
-import Colors from "../Colors";
-
-import AuthToken from "../services/AuthToken";
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10
-  },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
-  }
-});
+import Colors from "app/Colors";
+import AuthToken from "app/services/AuthToken";
+import styles from "./styles";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationStateRoute>
@@ -51,14 +30,14 @@ export default class App extends Component<Props> {
 
   goToNextScreen = () => {
     const { navigation } = this.props;
-    navigation.navigate("NewScreen");
+    navigation.navigate("ProductSurvey");
   };
 
   render() {
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor={Colors.B900} />
-        <Button title="New Screen" onPress={this.goToNextScreen} />
+        <Button title="Product Survey" onPress={this.goToNextScreen} />
         <Button title="Logout" onPress={this.handleLogout} />
       </View>
     );

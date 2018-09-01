@@ -1,6 +1,5 @@
 // @flow
-import React, { Component } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -21,13 +20,4 @@ const styles = StyleSheet.create({
   }
 });
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>The is the new screen</Text>
-      </View>
-    );
-  }
-}
+export default styles;

@@ -8,7 +8,7 @@ export default class App extends Component<Props> {
   render() {
     return (
       <Root>
-        <RootNav />
+        <RootNav persistenceKey="NavigationState" />
       </Root>
     );
   }

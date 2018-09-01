@@ -1,42 +1,45 @@
 // @flow
 import axios from "axios";
-import bugsnag from "../../bugsnag/client";
+import AuthToken, { TOKEN_KEY } from "app/services/AuthToken";
+import bugsnag from "app/bugsnag/client";
 import ROOT_URL from "../const";
-import AuthToken from "../../services/AuthToken";
 
-async function loginUser(username: string, password: string) {
-  return axios
-    .post(
-      `${ROOT_URL}/login`,
-      {},
-      {
-        headers: {
-          jwtusername: username,
-          jwtpassword: password
-        }
+const loginUser = async (username: string, password: string) => axios
+  .post(
+    `${ROOT_URL}/login`,
+    {},
+    {
+      headers: {
+        jwtusername: username,
+        jwtpassword: password
       }
-    )
-    .then((response) => {
+    }
+  )
+  .then((response) => {
+    let error = "";
+    if (response.data[TOKEN_KEY]) {
       AuthToken.saveTokenInfo(response.data);
-      return null;
-    })
-    .catch((error) => {
-      let errorText = "";
+    } else {
+      error = "Whoops! There was a problem at the server.";
+    }
+    return error;
+  })
+  .catch((error) => {
+    let errorText = "";
 
-      switch (error.response.data.message) {
-        case "Forbidden":
-          errorText = "Invalid user credentials. Try again.";
-          break;
-        case "Username and password Required":
-          errorText = "Username and Password Required";
-          break;
-        default:
-          bugsnag.notify(error);
-          errorText = "Server Error";
-      }
+    switch (error.response.data.message) {
+      case "Forbidden":
+        errorText = "Invalid user credentials. Try again.";
+        break;
+      case "Username and password Required":
+        errorText = "Username and Password Required";
+        break;
+      default:
+        bugsnag.notify(error);
+        errorText = "Server Error";
+    }
 
-      return errorText;
-    });
-}
+    return errorText;
+  });
 
 export default loginUser;

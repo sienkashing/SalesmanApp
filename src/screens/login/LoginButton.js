@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { Button } from "react-native-elements";
-import Colors from "../../Colors";
+import Colors from "app/Colors";
 import styles from "./styles";
 
 // Component: Login Button

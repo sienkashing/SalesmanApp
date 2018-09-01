@@ -5,7 +5,7 @@ const ErrorToast = (errorText: string) => {
   Toast.show({
     text: errorText,
     buttonText: "Okay",
-    duration: 20000,
+    duration: 10000,
     position: "top",
     type: "danger",
     textStyle: {
